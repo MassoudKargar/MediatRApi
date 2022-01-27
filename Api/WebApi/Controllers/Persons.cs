@@ -1,4 +1,6 @@
-﻿namespace WebApi.Controllers;
+﻿using Common.Commands;
+
+namespace WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -13,21 +15,16 @@ public class Persons : ControllerBase
 
     // GET: api/<Persons>
     [HttpGet]
-    public async Task<List<Person>> Get()
-    {
-        return await Mediator.Send(new GetPersonListQuery());
-    }
+    public async Task<List<Person>> Get(CancellationToken token) => 
+        await Mediator.Send(new GetPersonListQuery(),token);
 
     // GET api/<Persons>/5
     [HttpGet("{id}")]
-    public string Get(int id)
-    {
-        return "value";
-    }
+    public async Task<Person> Get(int id,CancellationToken token) => 
+        await Mediator.Send(new GetPersonByIdQuery(id), token);
 
     // POST api/<Persons>
     [HttpPost]
-    public void Post([FromBody] string value)
-    {
-    }
+    public async Task<Person> Post([FromBody] PersonEntry dto,CancellationToken token) => 
+        await Mediator.Send(new InsertPersonCommand(dto.FirstName, dto.LastName),token);
 }
