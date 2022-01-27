@@ -7,8 +7,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddSingleton<IDataAccess,DataAccess>();
-builder.Services.AddMediatR(typeof(MediatREntrypoint).Assembly);
+builder.Services.AddMediatRServiceCollection();
 var app = builder.Build();
 if (app.Environment.IsDevelopment()) app.UseMigrationsEndPoint();
 else

@@ -7,6 +7,5 @@ global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Identity.UI;
 global using Microsoft.EntityFrameworkCore;
 global using Common.Models;
-global using Common.DataAccess;
 global using MediatR;
-global using Common;
+global using Common.Ioc;

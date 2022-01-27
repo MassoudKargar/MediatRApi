@@ -1,4 +1,4 @@
-﻿namespace Common.DataAccess
+﻿namespace Common.DataAccessSetting
 {
     public class DataAccess : IDataAccess
     {

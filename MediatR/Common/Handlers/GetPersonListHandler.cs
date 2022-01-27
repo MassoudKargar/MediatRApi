@@ -1,4 +1,6 @@
-﻿namespace Common.Handlers;
+﻿using Common.DataAccessSetting;
+
+namespace Common.Handlers;
 public class GetPersonListHandler : IRequestHandler<GetPersonListQuery,List<Person>>
 {
     public GetPersonListHandler(IDataAccess dataAccess)
